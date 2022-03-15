@@ -1,4 +1,4 @@
-# Project: Cat Lovers
+# Project: I love cats
 ## Intro
 Create a website where users can learn and explore about cats and share their love for cats to other users.
 
