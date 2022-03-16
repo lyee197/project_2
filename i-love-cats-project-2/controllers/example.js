@@ -1,6 +1,10 @@
 // Import Dependencies
 const express = require('express')
 const Example = require('../models/example')
+require("dotenv").config()
+
+// https://thecatapi.com/v1/images?api_key=ABC123 <- this is how I do my API_KEY
+const urlTest = `https://thecatapi.com/v1/images?api_key=${process.env.API_KEY}`
 
 // Create router
 const router = express.Router()
