@@ -1,10 +1,12 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-    <h1>My cats</h1>
+    <h1>Pictures of Cats</h1>
     <div>
         {% for cats in catStuff %}
-            <img src="{{ cats.url }}" alt="CatPhoto">
+            <img src='{{ cats.url }}' alt="Cat Photo" id="catImg" />
         {% endfor%}
+        <a href=""><button type="submit" id="newCat">New Cat</button></a>
+        <a href=""><button type="submit" id="favorite">Favorite</button></a>
     </div>
 {% endblock %}
 <!-- let me ask you this -->

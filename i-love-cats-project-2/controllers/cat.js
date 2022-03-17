@@ -51,9 +51,8 @@ router.get('/', (req, res) => {
     })
     .then((catData) => {
         const { username, userId, loggedIn } = req.session
-        catArray = catData[0]
-		console.log(catArray)
-        res.render('cat/index', { catStuff: catArray, username, loggedIn })
+		console.log(catData.url)
+        res.render('cat/index', { catStuff: catData, username, loggedIn })
 	})
     .catch(error => console.error(error))
     // Cat.find({ owner: userId })
