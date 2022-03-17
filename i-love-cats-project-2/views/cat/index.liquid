@@ -1,5 +1,10 @@
 {% layout 'layout.liquid' %}
 {% block content %}
     <h1>My cats</h1>
+    <div>
+        {% for cats in catStuff %}
+            <img src="{{ cats.url }}" alt="CatPhoto">
+        {% endfor%}
+    </div>
 {% endblock %}
 <!-- let me ask you this -->

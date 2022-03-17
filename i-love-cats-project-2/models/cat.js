@@ -1,13 +1,25 @@
 const mongoose = require('./connection')
+
+const commentSchema = require('./comment')
+
+const User = require('./user')
+
 const { Schema, model } = mongoose
+
 const faveCatSchema = new Schema(
     {
         imgUrl: { type: String },
         catApiId: { type: String },
         // comments: { },
         // owner: userId reference
-        owner: { },
-        title: { }
+        owner: {
+            // references the type 'objectId'
+            type: Schema.Types.ObjectId,
+            // references the model: 'User'
+            ref: 'User'
+        },
+        title: { },
+        comments: [commentSchema]
     },
     { timestamps: true }
 )

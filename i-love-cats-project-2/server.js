@@ -55,7 +55,8 @@ app.use('/cat', CatRouter)
 
 app.get('/', (req, res) => {
 	// Make fetch call to api with api key in header
-	fetch(`https://api.thecatapi.com/v1/breeds`,  {method: 'GET',
+	fetch(`https://api.thecatapi.com/v1/images/search`,  {
+		method: 'GET',
 		headers: {
 			'X-API-KEY': `${process.env.API_KEY}`,
 			'Accept': 'application/json',

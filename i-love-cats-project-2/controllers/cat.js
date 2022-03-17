@@ -3,7 +3,7 @@
 ////////////////////////////////////////////
 const express = require('express')
 const Cat = require('../models/cat')
-
+const fetch = require('node-fetch')
 ////////////////////////////////////////////
 // Create router
 ////////////////////////////////////////////
@@ -30,16 +30,41 @@ router.use((req, res, next) => {
 ////////////////////////////////////////////
 
 // index ALL fruits route
+// const addCat = (cat) => {
+//     let img = document.createElement('img')
+//     img.src = `${cat.url}`
+
+// }
+let catArray
+
 router.get('/', (req, res) => {
-	const { username, userId, loggedIn } = req.session
-    Cat.find({ owner: userId })
-        .then((cat) => {
-            res.render('cat/index', { cat, username, loggedIn })
-        })
-        // show an error if there is one
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
+    fetch(`http://api.thecatapi.com/v1/images/search`,  {
+		method: 'GET',
+		headers: {
+			'X-API-KEY': `${process.env.API_KEY}`,
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},	
+	})
+    .then((response) => {
+        return response.json()
+    })
+    .then((catData) => {
+        const { username, userId, loggedIn } = req.session
+        catArray = catData[0]
+		console.log(catArray)
+        res.render('cat/index', { catStuff: catArray, username, loggedIn })
+	})
+    .catch(error => console.error(error))
+    // Cat.find({ owner: userId })
+    // const { username, userId, loggedIn } = req.session
+    //     .then((cat) => {
+    //         res.render('cat/index', { cat, username, loggedIn })
+    //     })
+    //     // show an error if there is one
+	// 	.catch(error => {
+	// 		res.redirect(`/error?error=${error}`)
+	// 	})
 })
 
 // index that shows only the user's examples
