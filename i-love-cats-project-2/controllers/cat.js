@@ -51,7 +51,7 @@ router.get('/', (req, res) => {
     })
     .then((catData) => {
         const { username, userId, loggedIn } = req.session
-		console.log(catData.url)
+		console.log(catData[0])
         res.render('cat/index', { catStuff: catData, username, loggedIn })
 	})
     .catch(error => console.error(error))
@@ -85,12 +85,26 @@ router.get('/favorite', (req, res) => {
 
 // new route -> GET route that renders our page with the form
 
-// create -> POST route that actually calls the db and makes a new document
+// create -> POST route that actually calls the db and makes a new document <----
+router.post('/', (req, res) => {
+    //
+    console.log(req.body)
+    imgUrl = req.body.url
+    req.body.owner = req.session.userId
+    Cat.create(req.body)
+        .then((cat) => {
+            console.log('this was returned from create', cat)
+            res.send('ILY CATS')
+        })
+        .catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
 // edit route -> GET that takes us to the edit form view
 // router.get('/:catApiId/edit', (req, res) {
 //     // we need to get the 
-
+router.edit
 // })
 // update route
 

@@ -5,8 +5,14 @@
         {% for cats in catStuff %}
             <img src='{{ cats.url }}' alt="Cat Photo" id="catImg" />
         {% endfor%}
-        <a href=""><button type="submit" id="newCat">New Cat</button></a>
-        <a href=""><button type="submit" id="favorite">Favorite</button></a>
+        <a href=""><button type="submit" id="newCat">Next Cat</button></a>
+        <form action="" method="POST">
+            {% for cats in catStuff %}
+            <input type="hidden" name="imgUrl" value="{{ cats.url }}"></input>
+            <input type="hidden" name="catApiId" value="{{ cats.id }}"></input>
+            {% endfor%}
+            <a href=""><button type="submit" id="favorite">Favorite</button></a>
+        </form >
     </div>
 {% endblock %}
 <!-- let me ask you this -->

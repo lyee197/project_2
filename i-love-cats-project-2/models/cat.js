@@ -10,15 +10,13 @@ const faveCatSchema = new Schema(
     {
         imgUrl: { type: String },
         catApiId: { type: String },
-        // comments: { },
-        // owner: userId reference
         owner: {
             // references the type 'objectId'
             type: Schema.Types.ObjectId,
             // references the model: 'User'
             ref: 'User'
         },
-        title: { },
+        title: { type: String },
         comments: [commentSchema]
     },
     { timestamps: true }
