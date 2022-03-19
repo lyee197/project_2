@@ -4,7 +4,12 @@
     <img src='{{ cat.imgUrl }}' alt="Cat Photo" id="catImg" />
     <form action="/cat/{{ cat.id }}/edit?_method=PUT" method="POST">
         <label>Title:</label>
-        <input type="text" name="title" id="" value="{{ cat.url }}">
+        <input 
+        type="text" 
+        name="title" 
+        id="" 
+        value="{{ cat.url }}"
+        >
         <button type="submit" value="Edit">Add to Favorite</button>
     </form>
 {% endblock %}

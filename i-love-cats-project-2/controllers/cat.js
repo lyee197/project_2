@@ -123,7 +123,7 @@ router.edit
 // })
 
 ////////////////////////////////////////////////////////////////////////
-// new route -> GET route that renders our page with the form
+// -- Edit Route ---    new route -> GET route that renders our page with the form
 ////////////////////////////////////////////////////////////////////////
 router.get('/:id/edit', (req, res) => {
     Cat.findById( req.params.id )
@@ -177,6 +177,7 @@ router.delete('/:id', (req, res) => {
 		.then((cat) => {
 			console.log('this is the response from FBID', cat)
 			// res.redirect('/fruits')
+            res.redirect('/cat/favorite')
 		})
         .catch((error) => {
 			res.redirect(`/error?error=${error}`)
