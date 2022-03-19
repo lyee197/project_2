@@ -84,17 +84,38 @@ router.get('/favorite', (req, res) => {
 })
 
 // new route -> GET route that renders our page with the form
+router.get('/:id/edit', (req, res) => {
+    Cat.findById( req.params.id )
+        .then((cat) => {
+            const { username, userId, loggedIn } = req.session
+            res.render('cat/edit', { cat, username, loggedIn})
+        })
+        .catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+//show
+router.get('/:id', (req, res) => {
+    Cat.findById( req.params.id )
+        .then((cat) => {
+            const { username, userId, loggedIn } = req.session
+            res.render('cat/show', { cat, username, loggedIn})
+        })
+        .catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
 // create -> POST route that actually calls the db and makes a new document <----
 router.post('/', (req, res) => {
     //
-    console.log(req.body)
     imgUrl = req.body.url
     req.body.owner = req.session.userId
     Cat.create(req.body)
         .then((cat) => {
             console.log('this was returned from create', cat)
-            res.send('ILY CATS')
+            res.redirect(`/cat/${cat.id}`)
         })
         .catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -107,6 +128,17 @@ router.post('/', (req, res) => {
 router.edit
 // })
 // update route
+router.put('/:id', (req, res) => {
+    const catId = req.params.id
+    Cat.findByIdAndUpdate(catId, req.body, { new: true})
+        .then((cat) => {
+            console.log('Cat', cat)
+            res.redirect(`/cat/${cat.id}`)
+        })
+        .catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
 // show route
 
@@ -114,3 +146,5 @@ router.edit
 
 // Export the Router
 module.exports = router
+
+//
