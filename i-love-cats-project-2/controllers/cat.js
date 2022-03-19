@@ -62,11 +62,11 @@ router.get('/favorite', (req, res) => {
     // find the cats
     Cat.find({ owner: req.session.userId})
         // find user
-        .then((cat) => {
+        .then((cats) => {
             //log user
             const username = req.session.username
             const loggedIn = req.session.loggedIn
-            res.render('cat/index', { cat, username, loggedIn})
+            res.render('cat/index', { cats, username, loggedIn})
         })
         // show an error if there is one
         .catch((error) => {
@@ -140,7 +140,7 @@ router.get('/:id/edit', (req, res) => {
 ////////////////////////////////////
 // update route
 ////////////////////////////////////
-router.put('/:id', (req, res) => {
+router.put('/:id/edit', (req, res) => {
     const catId = req.params.id
     Cat.findByIdAndUpdate(catId, req.body, { new: true})
         .then((cat) => {
