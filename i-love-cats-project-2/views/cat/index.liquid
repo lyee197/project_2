@@ -1,7 +1,25 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-    <h1>Pictures of Cats</h1>
-    <div>
+    <div class="container-md">
+        <h2 class="display-6">All My Cats</h2>
+        <div class="row">
+            {% for cat in catStuff %}
+                <div class="card" style="width: 18rem;">
+                    <!-- card header -> name of fruit -->
+                    <!-- card body -> ready to eat as title, color as text-->
+                    <h5 class="card-header">{{cat.title}}</h5>
+                    <div class="card-body">
+                        <img src="{{ cat.imgUrl}}" alt="">
+                        <a href="/fruits/{{ fruit.id }}" class="btn btn-info">
+                            View {{ cat.title }}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- <h1>Pictures of Cats</h1>
+    <div> 
         {% for cats in catStuff %}
             <img src='{{ cats.url }}' alt="Cat Photo" id="catImg" />
         {% endfor%}
@@ -13,6 +31,6 @@
             {% endfor%}
             <button type="submit" id="favorite">Favorite</button>
         </form >
-    </div>
+    </div> -->
 {% endblock %}
 <!-- let me ask you this -->
