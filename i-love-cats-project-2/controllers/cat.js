@@ -119,7 +119,7 @@ router.post('/', (req, res) => {
 // edit route -> GET that takes us to the edit form view
 // router.get('/:catApiId/edit', (req, res) {
 //     // we need to get the 
-router.edit
+// router.edit
 // })
 
 ////////////////////////////////////////////////////////////////////////
@@ -157,6 +157,7 @@ router.put('/:id/edit', (req, res) => {
 ////////////////////////////////////
 router.get('/:id', (req, res) => {
     Cat.findById( req.params.id )
+        // .populate()
         .then((cat) => {
             const { username, userId, loggedIn } = req.session
             res.render('cat/show', { cat, username, loggedIn, userId})
