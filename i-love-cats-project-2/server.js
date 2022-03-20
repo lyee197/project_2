@@ -4,7 +4,7 @@
 require("dotenv").config() // make env variables available
 const express = require("express")
 const middleware = require('./utils/middleware')
-const ExampleRouter = require('./controllers/example')
+// const ExampleRouter = require('./controllers/example')
 const UserRouter = require('./controllers/user')
 const BreedRouter = require('./controllers/breed')
 const CatRouter = require('./controllers/cat')
@@ -27,7 +27,7 @@ middleware(app)
 ////////////////////
 
 app.use('/auth', UserRouter)
-app.use('/examples', ExampleRouter)
+// app.use('/examples', ExampleRouter)
 // app.use('/breed', BreedRouter)
 app.use('/cat', CatRouter)
 app.use('/comments', CommentRouter)
@@ -57,7 +57,7 @@ app.use('/comments', CommentRouter)
 
 
 app.get('/', (req, res) => {
-	console.log(`https://api.thecatapi.com/v1/breeds?api_key=${process.env.API_KEY}`)
+	// console.log(`https://api.thecatapi.com/v1/breeds?api_key=${process.env.API_KEY}`)
     const { username, userId, loggedIn } = req.session
 	res.render('index.liquid', { loggedIn, username, userId })
 })
