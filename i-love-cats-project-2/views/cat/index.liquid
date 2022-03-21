@@ -1,7 +1,7 @@
 {% layout 'layout.liquid' %}
 {% block content %}
     <div class="container-md">
-        <h2 class="display-6">All My Cats</h2>
+        <h2 class="display-6 white">All My Cats</h2>
         <div class="row">
             {% for cat in cats %}
                 <div class="card" style="width: 18rem;">
@@ -9,7 +9,7 @@
                     <!-- card body -> ready to eat as title, color as text-->
                     <h5 class="card-header">{{cat.title}}</h5>
                     <div class="card-body">
-                        <img src="{{ cat.imgUrl }}" alt="" id="favImg">
+                        <img src="{{ cat.imgUrl }}" alt="" class="smallCatImg">
                         <a href="/cat/{{ cat._id }}" class="btn btn-info">
                             View {{ cat.title }}
                         </a>

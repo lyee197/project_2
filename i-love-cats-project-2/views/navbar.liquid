@@ -1,7 +1,7 @@
 {% block content %}
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-        <a href="/" class="navbar-brand">Examplr</a>
+        <a href="/" class="navbar-brand">Cats Home</a>
         {% if loggedIn %}
         <a href="/cat/favorite" class="nav-link text-light">Hello {{ username }} </a>
         {% endif %}
@@ -12,7 +12,7 @@
             {% if loggedIn %}
                 <!-- <a href="/examples" class="nav-link text-light">View All</a> -->
                 <a href="/cat/new" class="nav-link text-light">New</a>
-                <a href="/cat/favorite" class="nav-link text-light">My Cats</a>
+                <a href="/cat" class="nav-link text-light">All Cats</a>
                 <a href="/auth/logout" class="nav-link text-light">Log Out</a>
             {% else %}
                 <a href="/auth/signup" class="nav-link text-light">Sign Up</a>

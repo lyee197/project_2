@@ -4,7 +4,7 @@
         <!-- you can do fun things like inline style with properties of your rendered object -->
         <!-- <article style="background-color:{{fruit.color}}"> -->
         <article>
-            <h2>
+            <h2 class="white">
                 {{ cat.title }}
             </h2>
             <img src="{{ cat.imgUrl }}" alt="" id="catImg">
@@ -21,8 +21,8 @@
         <div class="col-md-6">
             <form action="/comments/{{cat.id}}" method="POST">
                 <fieldset>
-                    <legend>Add Comment</legend>
-                    <label class="form-label">Comment: </label>
+                    <legend class="white">Add Comment</legend>
+                    <label class="form-label white">Comment: </label>
                     <input type="text" class="form-control" name="note" placeholder="enter comment here...">
                 </fieldset>
                 <input type="submit" class="btn btn-success" value="Add Comment">

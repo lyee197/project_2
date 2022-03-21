@@ -1,15 +1,18 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-    <h1>Give Cat image a Title!</h1>
-    <img src='{{ cat.imgUrl }}' alt="Cat Photo" id="catImg" />
-    <form action="/cat/{{ cat.id }}/edit?_method=PUT" method="POST">
-        <label>Title:</label>
-        <input 
-        type="text" 
-        name="title" 
-        id="" 
-        value=""
-        >
-        <button type="submit" value="Edit">Add to Favorite</button>
-    </form>
+    <div class="container-md">
+        <h1 class="white">Give Cat image a Title!</h1>
+        <img src='{{ cat.imgUrl }}' alt="Cat Photo" id="catImg" />
+        <form action="/cat/{{ cat.id }}/edit?_method=PUT" method="POST">
+            <label class="white">Title:</label>
+            <input 
+            type="text" 
+            name="title" 
+            id="" 
+            value=""
+            placeholder="{{ cat.title }}"
+            >
+            <button type="submit" value="Edit">Change Title</button>
+        </form>
+    </div>
 {% endblock %}
