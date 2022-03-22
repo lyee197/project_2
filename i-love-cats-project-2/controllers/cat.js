@@ -29,7 +29,7 @@ router.use((req, res, next) => {
 // Routes
 ////////////////////////////////////////////
 
-// index ALL fruits route
+
 // const addCat = (cat) => {
 //     let img = document.createElement('img')
 //     img.src = `${cat.url}`
@@ -44,7 +44,6 @@ router.get('/', (req, res) => {
 		.then((cats) => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			// console.log(fruits)
 			res.render('cat/index', { cats, username, loggedIn })
 		})
 		// show an error if there is one
@@ -171,13 +170,13 @@ router.get('/:id', (req, res) => {
 // delete route
 ////////////////////////////////////
 router.delete('/:id', (req, res) => {
-	// get the fruit id
+	// get the cat id
 	const catId = req.params.id
-	// delete the fruit
+	// delete the cat
 	Cat.findByIdAndRemove(catId)
 		.then((cat) => {
 			console.log('this is the response from FBID', cat)
-			// res.redirect('/fruits')
+			// res.redirect('/cat')
             res.redirect('/cat/favorite')
 		})
         .catch((error) => {

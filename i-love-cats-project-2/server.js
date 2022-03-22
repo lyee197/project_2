@@ -27,33 +27,8 @@ middleware(app)
 ////////////////////
 
 app.use('/auth', UserRouter)
-// app.use('/examples', ExampleRouter)
-// app.use('/breed', BreedRouter)
 app.use('/cat', CatRouter)
 app.use('/comments', CommentRouter)
-
-// app.use('/comments', CommentRouter)
-// working from goro
-// app.get('/', (req, res) => {
-// 	// Make fetch call to api with api key in header
-// 	fetch(`https://api.thecatapi.com/v1/images/search`,  {method: 'GET',
-// 		headers: {
-// 			'X-API-KEY': `${process.env.API_KEY}`,
-// 			'Accept': 'application/json',
-// 			'Content-Type': 'application/json'
-// 		},	
-// 	})
-// 	// pass response from fetch call to the .then and return it's value as json
-// 	.then(response => response.json())
-// 	console.log(response.json())
-// 	// now you pass this json response
-//     .then((catsBreedData) => console.log(catsBreedData))
-//     .catch(error => console.error(error))
-
-// 	console.log(`https://thecatapi.com/v1/images?api_key=${process.env.API_KEY}`)
-//     const { username, userId, loggedIn } = req.session
-// 	res.render('index.liquid', { loggedIn, username, userId })
-// })
 
 
 app.get('/', (req, res) => {
@@ -81,3 +56,5 @@ app.all('*', (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`listening on port ${process.env.PORT}`)
 })
+
+app.listen(process.env.PORT || 3000)
